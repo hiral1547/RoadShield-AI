@@ -28,3 +28,26 @@ RoadShield-AI/
 ├── notebooks/
 ├── outputs/
 └── README.md
+
+
+# Development Progress
+
+## ✅ Day 1
+
+- Created GitHub repository
+- Created Google Drive project structure
+- Set up Google Colab
+- Installed required libraries
+- Successfully read and displayed road images using OpenCV
+
+---
+
+## ✅ Day 2
+
+- Selected pothole dataset
+- Uploaded dataset to Google Drive
+- Verified dataset structure
+- Inspected `data.yaml`
+- Displayed sample images
+- Verified YOLO annotations
+- Created dataset summary notebook
