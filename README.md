@@ -110,7 +110,7 @@ results = model.train(
 
 - The model learns from the **entire dataset 4 times**.
 - **1 Epoch = 1 complete pass through all training images.**
-
+- It's like reading one book 4 times
 ---
 
 ## 🔹 `imgsz = 640`
@@ -126,7 +126,42 @@ results = model.train(
 - Batch size affects:
   - 🚀 Training speed
   - 💾 GPU memory usage
+## Example: Batch Processing
 
+  Suppose the dataset contains **160 training images** and the batch size is **16**.
+
+  Then YOLO divides the dataset into batches like this:
+
+```text
+160 Images
+│
+├── Batch 1  → Images 1 - 16
+├── Batch 2  → Images 17 - 32
+├── Batch 3  → Images 33 - 48
+├── Batch 4  → Images 49 - 64
+├── Batch 5  → Images 65 - 80
+├── Batch 6  → Images 81 - 96
+├── Batch 7  → Images 97 - 112
+├── Batch 8  → Images 113 - 128
+├── Batch 9  → Images 129 - 144
+└── Batch 10 → Images 145 - 160
+```
+
+### Summary
+
+- **Total Images:** 160
+- **Batch Size:** 16
+- **Total Batches:** 10
+
+**Formula:**
+
+```
+Number of Batches = Total Images ÷ Batch Size
+                   = 160 ÷ 16
+                   = 10
+```
+
+> **One Batch = One group of images processed together before the model updates its learning.**
 ---
 
 ## 🔹 `project="/content/drive/MyDrive/RoadShield-AI/models"`
@@ -165,21 +200,8 @@ models/
 
 ---
 
-# 📌 One-Line Summary
+# One-Line Summary
 
 **This code trains the YOLO model using the pothole dataset for 4 epochs, resizes all images to 640×640, processes 16 images at a time, and saves the trained model and training results in the specified folder.**
 
 ---
-
-# 💡 Memory Trick
-
-| Parameter | Easy Meaning |
-|-----------|--------------|
-| `results` | Stores the training output |
-| `model.train()` | Starts model training |
-| `data` | Dataset information (`data.yaml`) |
-| `epochs` | Number of learning rounds |
-| `imgsz` | Input image size |
-| `batch` | Images processed together |
-| `project` | Save location of training outputs |
-| `name` | Folder name for this training run |
