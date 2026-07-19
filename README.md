@@ -251,3 +251,11 @@ Draw Bounding Box
 Confidence Score
 ```
 Here, the model is using what it learned to detect potholes in a new image.
+
+## ✅ Day 6
+
+- Implemented pothole detection on recorded road videos
+- Processed videos frame by frame using YOLO
+- Generated output video with bounding boxes
+- Learned how videos are processed as image sequences
+- Prepared the project for real-time camera detection
