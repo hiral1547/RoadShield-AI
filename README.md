@@ -260,80 +260,133 @@ Here, the model is using what it learned to detect potholes in a new image.
 - Learned how videos are processed as image sequences
 - Prepared the project for real-time camera detection
 
-## ✅ Day 7 – Real-Time Webcam Detection & Android Development Setup
+# 📅 Day 7 – Real-Time Webcam Detection using YOLOv8
+## RoadShield AI 🚧
 
-## 🎯 Objectives
+### Project Goal
 
-On Day 7 of the **RoadShield AI** project, the following objectives were completed:
+RoadShield AI aims to detect dangerous potholes in real-time using Artificial Intelligence and Computer Vision.
 
-- Configure the local development environment for real-time pothole detection.
-- Load the trained YOLOv8 pothole detection model in VS Code.
-- Perform real-time pothole detection using the system webcam.
-- Prepare the environment for future Android mobile application development.
-- Install Git for version control and project management.
+**Objective:**
+
+"Saving lives by detecting dangerous potholes before people reach them."
 
 ---
 
-# 🖥️ Development Environment Setup
+## 🎯 Day 7 Objectives
 
-## Google Drive for Desktop Integration
+On Day 7, the following tasks were completed:
 
-To access the trained YOLOv8 model directly from VS Code while maintaining synchronization with Google Drive, **Google Drive for Desktop** was installed.
+- Configure the local environment for real-time pothole detection.
+- Load the trained YOLOv8 pothole detection model.
+- Perform real-time inference using webcam.
+- Understand OpenCV-based live detection pipeline.
+- Prepare Android development environment for future mobile deployment.
+- Setup Git for project version control.
 
-After installation, Google Drive becomes available as a local drive on Windows.
+---
+
+## 🛠️ Tools and Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| YOLOv8 | Object detection model |
+| OpenCV | Webcam access and image processing |
+| Python | Programming language |
+| PyTorch | Deep learning framework |
+| VS Code | Local development environment |
+| Android Studio | Future mobile deployment |
+| Git | Version control |
+
+# 🖥️ Google Drive Integration
+
+## Google Drive for Desktop
+
+To access the trained YOLOv8 model directly from VS Code, Google Drive for Desktop was configured.
+
+Google Drive appears as a local drive in Windows.
 
 Example structure:
-G:
+
+G:\
 │
 └── My Drive
-│
-└── RoadShield-AI
-│
-├── dataset
-│
-├── models
-│
-└── notebooks
+    │
+    └── RoadShield-AI
+        │
+        ├── dataset
+        │
+        ├── models
+        │
+        └── notebooks
 
 
-The trained YOLO model can now be accessed directly:
+This allows the same trained model to be accessed from:
 
-```python
+- Google Colab
+- VS Code
+- Local Python environment
+
+
+### Advantages
+
+✅ Automatic synchronization with Google Drive.
+
+✅ No need to manually copy trained models.
+
+✅ Central storage for datasets, models, and notebooks.
+
+✅ Easy switching between cloud and local development.
+
+# Import YOLO library
+
 from ultralytics import YOLO
 
-model = YOLO(
-    r"G:\My Drive\RoadShield-AI\models\yolov8_pothole-2\weights\best.pt"
-)
+# 📦 Loading Trained YOLOv8 Model
 
-Advantages
-✅ Automatic synchronization with Google Drive.
-✅ No need to manually transfer model files.
-✅ Same model can be accessed from Google Colab and VS Code.
-✅ Centralized storage for datasets, models, and project files.
+The trained model file: best.pt contains learned pothole detection weights.
+The model is loaded using Ultralytics YOLO.
 
-🐍 Python Environment Configuration
+# Example model loading path
+# This path is used in local VS Code environment
 
-During real-time webcam testing, an issue was observed where the OpenCV camera window was not closing properly using the q key.
+model_path = r"G:\My Drive\RoadShield-AI\models\yolov8_pothole-2\weights\best.pt"
 
-One possible reason identified was the use of Python 3.14, which is a very recent Python release. Some AI and computer vision libraries such as:
+model = YOLO(model_path)
+
+print("YOLOv8 Model Loaded Successfully")
+
+# 🐍 Python Environment Configuration
+
+## Problem Encountered
+
+During webcam testing, the OpenCV camera window was not closing properly using the `q` key.
+
+Possible reason:
+
+Python 3.14 is a very recent release.
+
+Some AI libraries may not yet have complete compatibility:
 
 - OpenCV
 - PyTorch
-- Ultralytics YOLO
+- Ultralytics
 
-may not yet have complete compatibility with the latest Python version.
+Therefore, a stable Python 3.12 environment was created.
 
-Therefore, a dedicated Python 3.12 virtual environment was created.
+# ⚙️ Python 3.12 Virtual Environment Setup
 
-Create Virtual Environment
-Navigate to the project directory: cd D:\Hiral\pothole_detection
+## Create Environment
 
-Create Python 3.12 environment: py -3.12 -m venv .venv
+Command: cd D:\Hiral\pothole_detection > py -3.12 -m venv .venv
 
-Activate Virtual Environment : .\.venv\Scripts\activate
-
+## Activate Environment - 
+..venv\Scripts\activate
 After activation: (.venv) PS D:\Hiral\pothole_detection>
 
-Upgrade pip: python -m pip install --upgrade pip
+## Upgrade pip 
+python -m pip install --upgrade pip
 
-Install Required Libraries : python -m pip install ultralytics opencv-python torch torchvision
+## Install Required Libraries
+python -m pip install ultralytics opencv-python torch torchvision
+
