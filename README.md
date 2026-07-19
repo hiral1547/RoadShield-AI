@@ -259,3 +259,81 @@ Here, the model is using what it learned to detect potholes in a new image.
 - Generated output video with bounding boxes
 - Learned how videos are processed as image sequences
 - Prepared the project for real-time camera detection
+
+## ✅ Day 7 – Real-Time Webcam Detection & Android Development Setup
+
+## 🎯 Objectives
+
+On Day 7 of the **RoadShield AI** project, the following objectives were completed:
+
+- Configure the local development environment for real-time pothole detection.
+- Load the trained YOLOv8 pothole detection model in VS Code.
+- Perform real-time pothole detection using the system webcam.
+- Prepare the environment for future Android mobile application development.
+- Install Git for version control and project management.
+
+---
+
+# 🖥️ Development Environment Setup
+
+## Google Drive for Desktop Integration
+
+To access the trained YOLOv8 model directly from VS Code while maintaining synchronization with Google Drive, **Google Drive for Desktop** was installed.
+
+After installation, Google Drive becomes available as a local drive on Windows.
+
+Example structure:
+G:
+│
+└── My Drive
+│
+└── RoadShield-AI
+│
+├── dataset
+│
+├── models
+│
+└── notebooks
+
+
+The trained YOLO model can now be accessed directly:
+
+```python
+from ultralytics import YOLO
+
+model = YOLO(
+    r"G:\My Drive\RoadShield-AI\models\yolov8_pothole-2\weights\best.pt"
+)
+
+Advantages
+✅ Automatic synchronization with Google Drive.
+✅ No need to manually transfer model files.
+✅ Same model can be accessed from Google Colab and VS Code.
+✅ Centralized storage for datasets, models, and project files.
+
+🐍 Python Environment Configuration
+
+During real-time webcam testing, an issue was observed where the OpenCV camera window was not closing properly using the q key.
+
+One possible reason identified was the use of Python 3.14, which is a very recent Python release. Some AI and computer vision libraries such as:
+
+- OpenCV
+- PyTorch
+- Ultralytics YOLO
+
+may not yet have complete compatibility with the latest Python version.
+
+Therefore, a dedicated Python 3.12 virtual environment was created.
+
+Create Virtual Environment
+Navigate to the project directory: cd D:\Hiral\pothole_detection
+
+Create Python 3.12 environment: py -3.12 -m venv .venv
+
+Activate Virtual Environment : .\.venv\Scripts\activate
+
+After activation: (.venv) PS D:\Hiral\pothole_detection>
+
+Upgrade pip: python -m pip install --upgrade pip
+
+Install Required Libraries : python -m pip install ultralytics opencv-python torch torchvision
