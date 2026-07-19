@@ -214,3 +214,40 @@ models/
 - Learned confidence scores
 - Studied Precision, Recall, and mAP
 - Saved prediction results
+
+# Training vs Inference in YOLOv8
+
+---
+
+## 1. Training Phase
+
+During training, the YOLO model **learns** from labeled pothole images.
+
+### Workflow
+
+```text
+Road Images + Labels
+          │
+          ▼
+      Train YOLOv8
+          │
+          ▼
+ Generate Trained Model
+      (best.pt)
+```
+## 2. Inference Phase
+
+Inference is the process of using the trained model to make predictions on new, unseen images.
+
+```text
+New Road Image
+       │
+       ▼
+     best.pt
+       │
+       ▼
+Detect Pothole
+Draw Bounding Box
+Confidence Score
+```
+Here, the model is using what it learned to detect potholes in a new image.
