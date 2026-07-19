@@ -205,3 +205,12 @@ models/
 **This code trains the YOLO model using the pothole dataset for 4 epochs, resizes all images to 640×640, processes 16 images at a time, and saves the trained model and training results in the specified folder.**
 
 ---
+
+## ✅ Day 5
+
+- Loaded trained YOLO model (`best.pt`)
+- Performed image inference
+- Detected potholes in unseen images
+- Learned confidence scores
+- Studied Precision, Recall, and mAP
+- Saved prediction results
