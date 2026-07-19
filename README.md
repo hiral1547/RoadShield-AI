@@ -307,7 +307,7 @@ To access the trained YOLOv8 model directly from VS Code, Google Drive for Deskt
 Google Drive appears as a local drive in Windows.
 
 Example structure:
-
+```text
 G:\
 │
 └── My Drive
@@ -319,7 +319,7 @@ G:\
         ├── models
         │
         └── notebooks
-
+```
 
 This allows the same trained model to be accessed from:
 
@@ -390,3 +390,124 @@ python -m pip install --upgrade pip
 ## Install Required Libraries
 python -m pip install ultralytics opencv-python torch torchvision
 
+# 🎥 Real-Time Webcam Detection
+
+The trained YOLOv8 model was tested using a live webcam.
+
+The detection pipeline:
+```text
+Webcam
+|
+↓
+Capture Frame
+|
+↓
+YOLOv8 Model
+|
+↓
+Pothole Detection
+|
+↓
+Bounding Box + Confidence Score
+```
+# ▶ Running Real-Time Detection
+The application is executed locally using VS Code:
+Command: python day7_realtime_camera.py
+
+Expected output:
+Camera started successfully.
+Press 'q' to quit.
+
+## 📷 Expected Webcam Window
+
+When the application starts, an OpenCV window opens displaying the live webcam feed.
+
+```text
++--------------------------------------------------+
+|                                                  |
+|        RoadShield AI - Real-Time Detection       |
+|                                                  |
+|              Live Webcam Feed                    |
+|                                                  |
+|        [ Webcam Video Stream ]                   |
+|                                                  |
++--------------------------------------------------+
+```
+
+## 🚧 Pothole Detection Output
+
+When the YOLOv8 model detects a pothole, a bounding box with the class name and confidence score appears on the live video.
+
+Example:
+
+```text
++--------------------------------------------------+
+|                                                  |
+|        RoadShield AI - Real-Time Detection       |
+|                                                  |
+|       ┌──────────────────────────┐               |
+|       │       pothole 92%        │               |
+|       └──────────────────────────┘               |
+|                                                  |
++--------------------------------------------------+
+```
+
+The output contains:
+
+- Bounding box
+- Class name
+- Confidence percentage
+
+## How to quit the webcam?
+OpenCV Window Focus
+OpenCV receives keyboard input only when the webcam window is active.
+
+Steps:
+```text
+    1. Open webcam window.
+    2. Click inside the window.
+    3. Press: q
+```
+# 📱 Android Development Environment Setup
+
+Android Studio was installed for future RoadShield AI mobile application development.
+
+Completed:
+```text
+✅ Android Studio installed
+✅ Android SDK installed
+✅ Android Emulator installed
+✅ Android Virtual Device created
+✅ Emulator tested successfully
+```
+SDK Location: C:\Users\DELL\AppData\Local\Android\Sdk
+
+# ☕ Java Verification
+Android development requires Java.
+Check installation: java -version
+
+# 🌿 Git Version Control
+
+Git was installed for managing the RoadShield AI project.
+
+Git will be used for:
+
+- Source code management
+- Version history
+- Branch management
+- Backup
+- Future collaboration
+- 
+# Day 7 Summary
+Completed:
+```text
+✅ Google Drive integration
+✅ YOLOv8 model access from local environment
+✅ Python 3.12 virtual environment setup
+✅ Installed AI dependencies
+✅ Real-time webcam detection implementation
+✅ Investigated OpenCV webcam issue
+✅ Android Studio setup
+✅ Android emulator testing
+✅ Git installation
+```
