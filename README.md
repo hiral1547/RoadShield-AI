@@ -511,3 +511,168 @@ Completed:
 ✅ Android emulator testing
 ✅ Git installation
 ```
+
+# 📅 Day 8 – Real-Time Pothole Detection with Voice Alert
+
+## 🎯 Objective
+
+The objective of Day 8 was to develop a real-time pothole detection system using a webcam and integrate an offline voice alert mechanism. The system detects potholes using a custom-trained YOLOv8 model, displays bounding boxes around detected potholes, and announces "Pothole Ahead" at regular intervals to warn the user.
+
+---
+
+## ✅ Work Completed
+
+### 1. Loaded the Trained YOLOv8 Model
+
+- Loaded the custom-trained YOLOv8 pothole detection model (`best.pt`).
+- Verified that the model initializes successfully before starting real-time detection.
+
+---
+
+### 2. Connected the Webcam
+
+- Accessed the default webcam using OpenCV.
+- Added a check to ensure the camera is available before running the application.
+
+---
+
+### 3. Implemented Real-Time Pothole Detection
+
+- Captured live video frames continuously from the webcam.
+- Passed each frame to the YOLOv8 model for inference.
+- Detected potholes in real time using a confidence threshold of **0.20**.
+
+---
+
+### 4. Displayed Detection Results
+
+- Drew bounding boxes around detected potholes.
+- Displayed the annotated video stream in a live OpenCV window.
+- Updated the detection results continuously as new frames were captured.
+
+---
+
+### 5. Integrated Offline Voice Alerts
+
+- Used the **pyttsx3** library to generate offline text-to-speech alerts.
+- Configured the application to announce:
+
+> **"Pothole Ahead"**
+
+whenever a pothole is detected.
+
+---
+
+### 6. Added Alert Interval
+
+To avoid continuous and repetitive announcements:
+
+- Introduced a **3-second alert interval**.
+- The application now repeats the warning only once every three seconds while the pothole remains visible.
+
+---
+
+### 7. Implemented Detection Memory
+
+Real-time object detection may occasionally miss detections for one or two frames due to camera movement or lighting conditions.
+
+To improve stability:
+
+- Implemented a **1-second detection memory**.
+- The system remembers a recent pothole detection for a short duration.
+- Prevents unnecessary interruptions in voice alerts caused by temporary missed detections.
+
+---
+
+### 8. Prevented Multiple Voice Threads
+
+To ensure smooth execution:
+
+- Added an `is_speaking` flag.
+- Prevented multiple speech engines from running simultaneously.
+- Ensured only one voice alert is spoken at a time.
+
+---
+
+### 9. Used Multithreading
+
+Implemented Python threading for the voice alert system.
+
+Benefits include:
+
+- Smooth webcam video streaming
+- Non-blocking speech execution
+- Improved real-time application performance
+
+---
+
+### 10. Implemented Proper Resource Cleanup
+
+When the user presses **Q**:
+
+- Webcam is released.
+- OpenCV windows are closed.
+- The application terminates safely without leaving background processes.
+
+---
+
+## 📚 Concepts Learned
+
+- Real-time computer vision
+- YOLOv8 live inference
+- Webcam video capture using OpenCV
+- Offline text-to-speech with pyttsx3
+- Python multithreading
+- Detection memory for stable object detection
+- Alert interval mechanism
+- Safe resource management
+
+---
+
+## 📂 Project Structure
+
+```text
+RoadShield-AI
+│
+├── models
+│   └── yolov8_pothole-2
+│       └── weights
+│           └── best.pt
+│
+├── notebooks
+│   └── Day8_Real_Time_Detection.py
+│
+└── README.md
+```
+
+---
+
+## 🎥 Output
+
+The application performs the following operations:
+
+- Opens the webcam.
+- Detects potholes in real time.
+- Draws bounding boxes around detected potholes.
+- Announces **"Pothole Ahead"** through the speaker.
+- Repeats the voice alert every **3 seconds** while the pothole remains visible.
+- Stops announcing once the pothole is no longer detected.
+- Closes the application safely when **Q** is pressed.
+
+---
+
+## 🚀 Skills Gained
+
+- Real-Time AI Application Development
+- YOLOv8 Deployment
+- Computer Vision with OpenCV
+- Offline Voice Alert Integration
+- Python Multithreading
+- Event-Based Alert System Design
+- Real-Time Object Detection Pipeline
+
+---
+
+## 📅 Day 8 Summary
+
+By the end of Day 8, a fully functional desktop prototype of **RoadShield AI** was developed. The application successfully performs real-time pothole detection using a webcam, displays live detection results, and provides offline voice alerts to notify users of upcoming potholes. This milestone establishes the core real-time detection pipeline and prepares the project for future enhancements such as GPS location tracking, mobile application integration, and cloud-based reporting.
